@@ -1,6 +1,7 @@
 import 'package:app06_components_20242/pages/alert_page.dart';
 import 'package:app06_components_20242/pages/avatar_page.dart';
 import 'package:app06_components_20242/pages/card_page.dart';
+import 'package:app06_components_20242/pages/card_page2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -49,9 +50,15 @@ class HomePage extends StatelessWidget {
                 width: 160.0,
                 child: Divider(),
               ),
-              ItemComponentWidget(title: "Avatar", toPage: AvatarPage()),
-              ItemComponentWidget(title: "Alert", toPage: AlertPage()),
-              ItemComponentWidget(title: "Card", toPage: CardPage()),
+              ItemComponentWidget(title: "Avatar", toPage: const AvatarPage()),
+              ItemComponentWidget(title: "Alert", toPage: const AlertPage()),
+              ItemComponentWidget(title: "Card", toPage: const CardPage()),
+              ItemComponentWidget(title: "Card2", toPage: const CardPage2()),
+              // Nuevo campo con la imagen de Pexels
+              ItemComponentWidget(
+                title: "Imagen Pexels",
+                toPage: const PexelsImagePage(),
+              ),
             ],
           ),
         ),
@@ -61,10 +68,14 @@ class HomePage extends StatelessWidget {
 }
 
 class ItemComponentWidget extends StatelessWidget {
-  String title;
-  Widget toPage;
+  final String title;
+  final Widget toPage;
 
-  ItemComponentWidget({super.key, required this.title, required this.toPage});
+  const ItemComponentWidget({
+    super.key,
+    required this.title,
+    required this.toPage,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +95,9 @@ class ItemComponentWidget extends StatelessWidget {
       child: ListTile(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => toPage));
+            context,
+            MaterialPageRoute(builder: (context) => toPage),
+          );
         },
         leading: const Icon(
           Icons.check_circle_outline,
@@ -103,6 +116,42 @@ class ItemComponentWidget extends StatelessWidget {
         trailing: Icon(
           Icons.chevron_right_outlined,
           color: Colors.black.withOpacity(0.2),
+        ),
+      ),
+    );
+  }
+}
+
+// Página para mostrar la nueva imagen
+class PexelsImagePage extends StatelessWidget {
+  const PexelsImagePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Imagen de Pexels"),
+      ),
+      body: Center(
+        child: Container(
+          margin: const EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                offset: const Offset(4, 4),
+                blurRadius: 12.0,
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16.0),
+            child: Image.network(
+              'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
       ),
     );
