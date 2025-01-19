@@ -29,7 +29,8 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.0),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.5),
+                      color: const Color.fromARGB(255, 214, 157, 22)
+                          .withOpacity(0.5),
                       offset: const Offset(5, 5),
                       blurRadius: 12.0,
                     ),
@@ -82,7 +83,7 @@ class ItemComponentWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(16.0),
         boxShadow: [
           BoxShadow(
@@ -122,7 +123,6 @@ class ItemComponentWidget extends StatelessWidget {
   }
 }
 
-// Página para mostrar la nueva imagen
 class PexelsImagePage extends StatelessWidget {
   const PexelsImagePage({super.key});
 
@@ -149,7 +149,7 @@ class PexelsImagePage extends StatelessWidget {
             borderRadius: BorderRadius.circular(16.0),
             child: Image.network(
               'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-              fit: BoxFit.cover,
+              fit: BoxFit.contain, // La imagen se ajusta dentro del contenedor
             ),
           ),
         ),

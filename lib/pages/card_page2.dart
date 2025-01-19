@@ -6,7 +6,7 @@ class CardPage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
+      backgroundColor: const Color.fromARGB(255, 240, 188, 229),
       body: Center(
         child: Container(
           margin: const EdgeInsets.all(16.0),
@@ -52,7 +52,7 @@ class CardPage2 extends StatelessWidget {
                           "CEO at Apple Inc",
                           style: TextStyle(
                             fontSize: 14.0,
-                            color: Colors.grey,
+                            color: Color.fromARGB(255, 158, 158, 158),
                           ),
                         ),
                       ],
